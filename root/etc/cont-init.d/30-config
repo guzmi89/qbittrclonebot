@@ -1,0 +1,20 @@
+#!/usr/bin/with-contenv bash
+
+# make our folders
+mkdir -p \
+	/config/qBittorrent \
+	/config/data \
+	/config/normales \
+	/config/zip
+
+# copy config
+[[ ! -e /config/qBittorrent/qBittorrent.conf ]] && \
+	cp /defaults/qBittorrent.conf /config/qBittorrent/qBittorrent.conf && cp /defaults/bot.py /config/
+# chown download directory if currently set to root
+if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
+	chown -R abc:abc /downloads
+fi
+
+# permissions
+chown -R abc:abc \
+	/config
