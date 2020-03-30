@@ -56,5 +56,5 @@ apt-get update && \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 6881 6881/udp 8080
+EXPOSE 6881 6881/udp 8085
 VOLUME /config /downloads
